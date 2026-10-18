@@ -45,7 +45,7 @@ dbGetQuery(connection, "SELECT COUNT(*) FROM flights")
 
 ```{r}
 # Get the count of rows for each airline carrier
-dbGetQuery(connection, "SELECT COUNT(*), carrier FROM flights GROUP BY carrier")
+dbGetQuery(connection, "SELECT COUNT(*), carrier FROM flights GROUP BY carrier ORDER BY COUNT(*) DESC")
 ```
 
 ## Section 1.c: Find the average departure delay (dep_delay)
@@ -72,6 +72,8 @@ dbGetQuery(connection, "SELECT COUNT(dest), dest FROM flights GROUP BY dest
 Sort the results from largest to smallest delay. You must close the connection when you are done. Use `dbDisconnect()`
 
 ```{r}
+# Group by carriers and calculate the mean arrival delay. Then order
+# by the means in descending order.
 dbGetQuery(connection, "SELECT carrier, AVG(arr_delay) FROM flights 
            GROUP BY carrier ORDER BY AVG(arr_delay) DESC")
 ```
@@ -84,6 +86,8 @@ DBI::dbDisconnect(connection)
 # Part II
 
 ## Section 2.a
+
+
 
 ## Section 2.b
 
