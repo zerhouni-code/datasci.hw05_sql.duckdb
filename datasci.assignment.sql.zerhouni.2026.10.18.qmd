@@ -7,11 +7,50 @@ format: pdf
 ---
 
 ```{r}
-lapply(c("DBI", "duckdb", "nycflights13"))
+#| warning: FALSE
+#| error: FALSE
+#| output: FALSE
+lapply(c("DBI", "duckdb", "nycflights13"), library, character.only=TRUE)
 ```
 
 ```{r}
+#| warning: FALSE
+#| error: FALSE
+#| output: FALSE
 connection <- DBI::dbConnect(drv = duckdb::duckdb(), dbdir = "./data/flights.duckdb")
+```
+
+# Part I: Answer the following question by running SQL using RStudio.
+
+## Section 1.a: List the first 10 rows of the flights table.
+
+```{r}
+dbGetQuery(connection, "SELECT * FROM flights LIMIT 10")
+```
+
+## Section 1.b
+
+## Section 1.c
+
+## Section 1.d
+
+## Section 1.e
+
+# Part II
+
+## Section 2.a
+
+## Section 2.b
+
+## Section 2.c
+
+## Section 2.d
+
+## Section 2.e
+
+
+```{r}
+DBI::dbDisconnect(connection)
 ```
 
 
