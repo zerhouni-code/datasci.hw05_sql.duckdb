@@ -27,6 +27,8 @@ connection <- DBI::dbConnect(drv = duckdb::duckdb(),
 
 ## Section 1.a: List the first 10 rows of the flights table.
 
+We select all the rows with the asterisk symbol and limit our output to the first 10 rows.
+
 ```{r}
 # Get the first ten rows of the flights table
 dbGetQuery(connection, "SELECT * FROM flights LIMIT 10")
@@ -36,12 +38,16 @@ dbGetQuery(connection, "SELECT * FROM flights LIMIT 10")
 
 *i. in the dataset*
 
+We use the count function to count all the rows in the flights table.
+
 ```{r}
 # Get the total count of rows in the flights table
 dbGetQuery(connection, "SELECT COUNT(*) FROM flights")
 ```
 
 *ii. for each carrier*
+
+We use the count function to count all the rows in the table, and we select the carrier column from the flights table. Then we group by each unique carrier, and order the table by the grouped counts of rows in descending order.
 
 ```{r}
 # Get the count of rows for each airline carrier
@@ -50,12 +56,16 @@ dbGetQuery(connection, "SELECT COUNT(*), carrier FROM flights GROUP BY carrier O
 
 ## Section 1.c: Find the average departure delay (dep_delay)
 
+We use the average function on the `dep_delay` column of the flights table calculate the average departure delay.
+
 ```{r}
 # Get the mean of dep_delay from the flights table
 dbGetQuery(connection, "SELECT AVG(dep_delay) FROM flights")
 ```
 
 ## Section 1.d: Find the top 5 destinations (dest) With the most flights.
+
+We use the count function on the destination column and select the destinations from the flights table initially. Then we group by unique destinations and order the table by the counts of destinations in descending order. Finally we limit the ouput to the top five rows.
 
 ```{r}
 # Group by destinations, count the number of observations for each destination,
@@ -66,10 +76,15 @@ dbGetQuery(connection, "SELECT COUNT(dest), dest FROM flights GROUP BY dest
 
 ## Section 1.e: Create a table showing:
 
-- carrier
-- average arrival delay (arr_delay)
+**- carrier**
 
-Sort the results from largest to smallest delay. You must close the connection when you are done. Use `dbDisconnect()`
+**- average arrival delay (arr_delay)**
+
+\
+
+**Sort the results from largest to smallest delay. You must close the connection when you are done. Use `dbDisconnect()`**
+
+We first select as our columns carrier and use the averge function on `arr_delay` from the flights table. Then we group by carrier and order by the average arrival delay in descending order.
 
 ```{r}
 # Group by carriers and calculate the mean arrival delay. Then order
@@ -85,17 +100,45 @@ DBI::dbDisconnect(connection)
 
 # Part II
 
-## Section 2.a
+## Section 2.a: List the first 10 rows of the flights table.
+
+We select all the rows from the flights table with the asterisk and then limit our results to the top ten rows.
 
 ![List the first 10 rows of the flights table.](screenshots/screenshot_dbeaver_part2a.png)
 
-## Section 2.b
+## Section 2.b: Count the Number of Flights for Each Carrier
 
-## Section 2.c
+**Your output should include:**
 
-## Section 2.d
+**– carrier**
 
-## Section 2.e
+**– number of flights Sort from the largest to smallest.**
+
+
+
+## Section 2.c: Find the average departure delay by month
+
+**Your output should include:**
+
+**– month**
+
+**– average departure delay**
+
+## Section 2.d: Find the top 10 routes (dest) by:
+
+**- origin**
+
+**- dest**
+
+**ordered by number of flights.**
+
+
+
+## Section 2.e : Export Part II Section b results
+
+**Export the result of part b query to a CSV file using the Export Data feature in DBeaver.**
+
+**Submit the exported CSV file along with your homework.**
 
 
 
