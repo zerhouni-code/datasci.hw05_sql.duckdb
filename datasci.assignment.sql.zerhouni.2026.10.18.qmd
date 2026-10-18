@@ -87,7 +87,7 @@ DBI::dbDisconnect(connection)
 
 ## Section 2.a
 
-
+![List the first 10 rows of the flights table.](screenshots/screenshot_dbeaver_part2a.png)
 
 ## Section 2.b
 
