@@ -1,0 +1,17 @@
+---
+title: "Data Science: SQL Assignment"
+subtitle: "SQL and DBeaver"
+author: "Zak Zerhouni"
+date: today
+format: pdf
+---
+
+```{r}
+lapply(c("DBI", "duckdb", "nycflights13"))
+```
+
+```{r}
+connection <- DBI::dbConnect(drv = duckdb::duckdb(), dbdir = "./data/flights.duckdb")
+```
+
+
