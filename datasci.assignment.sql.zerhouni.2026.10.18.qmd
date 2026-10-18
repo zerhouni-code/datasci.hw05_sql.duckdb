@@ -7,6 +7,7 @@ format: pdf
 ---
 
 ```{r}
+# Load required libraries
 #| warning: FALSE
 #| error: FALSE
 #| output: FALSE
@@ -14,6 +15,7 @@ lapply(c("DBI", "duckdb", "nycflights13"), library, character.only=TRUE)
 ```
 
 ```{r}
+# Establish database connection 
 #| warning: FALSE
 #| error: FALSE
 #| output: FALSE
@@ -28,7 +30,21 @@ connection <- DBI::dbConnect(drv = duckdb::duckdb(), dbdir = "./data/flights.duc
 dbGetQuery(connection, "SELECT * FROM flights LIMIT 10")
 ```
 
-## Section 1.b
+## Section 1.b: Find the number of flights
+
+*i. in the dataset*
+
+```{r}
+dbGetQuery(connection, "SELECT COUNT(*) FROM flights")
+```
+
+*ii. for each carrier*
+
+```{r}
+dbGetQuery(connection, "SELECT COUNT(*), carrier FROM flights GROUP BY carrier")
+```
+
+
 
 ## Section 1.c
 
@@ -50,6 +66,7 @@ dbGetQuery(connection, "SELECT * FROM flights LIMIT 10")
 
 
 ```{r}
+# Close the database connection
 DBI::dbDisconnect(connection)
 ```
 
