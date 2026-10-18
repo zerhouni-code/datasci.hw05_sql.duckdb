@@ -4,7 +4,11 @@ subtitle: "SQL and DBeaver"
 author: "Zak Zerhouni"
 date: today
 date-format: long
-format: pdf
+format: 
+  pdf:
+    theme:
+      dark: darkly
+      light: default
 ---
 
 ```{r}
@@ -18,9 +22,10 @@ invisible(lapply(c("DBI", "duckdb", "nycflights13"),
 ```{r}
 # Establish database connection 
 #| warning: FALSE
+#| error: FALSE
 #| output: FALSE
-connection <- DBI::dbConnect(drv = duckdb::duckdb(), 
-                             dbdir = "./data/flights.duckdb")
+suppressMessages(connection <- DBI::dbConnect(drv = duckdb::duckdb(), 
+                             dbdir = "./data/flights.duckdb")) 
 ```
 
 # Part I: Answer the following question by running SQL using RStudio.
@@ -110,9 +115,9 @@ We select all the rows from the flights table with the asterisk and then limit o
 
 **Your output should include:**
 
-1. ** carrier**
+1. **carrier**
  
-2. ** number of flights Sort from the largest to smallest.**
+2. **number of flights Sort from the largest to smallest.**
 
 We select the counts of all the rows and the carrier column from the flights table. Then we group by carrier, and we order by the row counts in descending order.
 
@@ -145,3 +150,11 @@ We first select the average function with the `dep_delay` column and select the 
 **Export the result of part b query to a CSV file using the Export Data feature in DBeaver.**
 
 **Submit the exported CSV file along with your homework.**
+
+```{=latex}
+\begin{center}
+    \textit{This is the end of the assignment.}
+\end{center}
+```
+
+
