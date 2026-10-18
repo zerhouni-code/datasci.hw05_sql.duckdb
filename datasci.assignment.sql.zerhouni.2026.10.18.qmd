@@ -36,7 +36,7 @@ dbGetQuery(connection, "SELECT * FROM flights LIMIT 10")
 
 ## Section 1.b: Find the number of flights
 
-*i. in the dataset*
+i. **in the dataset**
 
 We use the count function to count all the rows in the flights table.
 
@@ -45,7 +45,7 @@ We use the count function to count all the rows in the flights table.
 dbGetQuery(connection, "SELECT COUNT(*) FROM flights")
 ```
 
-*ii. for each carrier*
+ii. **for each carrier**
 
 We use the count function to count all the rows in the table, and we select the carrier column from the flights table. Then we group by each unique carrier, and order the table by the grouped counts of rows in descending order.
 
@@ -76,9 +76,9 @@ dbGetQuery(connection, "SELECT COUNT(dest), dest FROM flights GROUP BY dest
 
 ## Section 1.e: Create a table showing:
 
-**- carrier**
+1. **carrier**
 
-**- average arrival delay (arr_delay)**
+2. **average arrival delay (arr_delay)**
 
 \
 
@@ -110,37 +110,38 @@ We select all the rows from the flights table with the asterisk and then limit o
 
 **Your output should include:**
 
-**– carrier**
+1. ** carrier**
+ 
+2. ** number of flights Sort from the largest to smallest.**
 
-**– number of flights Sort from the largest to smallest.**
+We select the counts of all the rows and the carrier column from the flights table. Then we group by carrier, and we order by the row counts in descending order.
 
-
+![Count the Number of Flights for Each Carrier](./screenshots/screenshot_dbeaver_part2b.png)
 
 ## Section 2.c: Find the average departure delay by month
 
 **Your output should include:**
 
-**– month**
+1. **month**
 
-**– average departure delay**
+2. **average departure delay**
+
+We first select the average function with the `dep_delay` column and select the month column from the flights table. Then we group by month.
+
+![Find the average departure delay by month](./screenshots/screenshot_dbeaver_part2c.png)
 
 ## Section 2.d: Find the top 10 routes (dest) by:
 
-**- origin**
+1. **origin**
 
-**- dest**
+2. **dest**
 
 **ordered by number of flights.**
 
-
+![Find the top 10 routes by origin and destination](./screenshots/screenshot_dbeaver_part2d.png)
 
 ## Section 2.e : Export Part II Section b results
 
 **Export the result of part b query to a CSV file using the Export Data feature in DBeaver.**
 
 **Submit the exported CSV file along with your homework.**
-
-
-
-
-
